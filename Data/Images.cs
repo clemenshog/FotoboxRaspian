@@ -8,7 +8,7 @@
             for (int i = 0; i < 10; i++)
             {
 
-                string path = Directory.GetCurrentDirectory() + "\\wwwroot\\images\\" + i + ".jpg";
+                string path = Directory.GetCurrentDirectory() + "/wwwroot/images/" + i + ".jpg";
                 string path2 = "/images/" + i + ".jpg";
                 if (File.Exists(path))
                 {
@@ -21,7 +21,7 @@
         public int CountFiles()
         {
 
-            DirectoryInfo path = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\wwwroot\\images\\");
+            DirectoryInfo path = new DirectoryInfo(Directory.GetCurrentDirectory() + "/wwwroot/images/");
 
             int fileLength = path.GetFiles().Length;
 

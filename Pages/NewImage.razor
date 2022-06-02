@@ -1,0 +1,109 @@
+﻿@page "/newImage"
+@using BlazorServerApp.Shared
+@using Blazored.LocalStorage
+@using BlazorServerApp.Data
+@using System.Timers
+@using SkiaSharp
+@using System.IO
+
+@using SixLabors.ImageSharp
+@using SixLabors.ImageSharp.Processing
+@inject IJSRuntime JSRuntime
+@inject IModalService modal
+@inject NavigationManager NavManager
+
+
+<h1>Camera</h1>
+<div>
+<video id="videoFeed" width="1920" height="1080" />
+@*<button class="btn btn-primary mb-3" @onclick="CaptureFrame">Capture Frame</button>*@
+<canvas class="d-none" id="currentFrame" width="320" height="240" />
+
+<footer class="countdown">
+
+    <p> @counter </p>
+
+</footer>
+</div>
+
+@code
+{
+
+
+    int index = 0;
+    Images obj = new Images();
+    string frameUri = "";
+    string path = Directory.GetCurrentDirectory() + "\\wwwroot\\images\\";
+
+
+    private static System.Timers.Timer aTimer;
+    private int counter = 5;
+    protected override async Task OnInitializedAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("startVideo", "videoFeed");
+
+        index = obj.CountFiles();
+
+        StartTimer();
+    }
+
+    private async Task CaptureFrame()
+    {
+
+        await JSRuntime.InvokeAsync<String>("getFrame", "videoFeed", "currentFrame", DotNetObjectReference.Create(this));
+    }
+
+    public void StartTimer()
+    {
+        aTimer = new System.Timers.Timer(1000);
+        aTimer.Elapsed += CountDownTimer;
+        aTimer.Enabled = true;
+    }
+    public void CountDownTimer(Object source, ElapsedEventArgs e)
+    {
+        if (counter > 0)
+        {
+            counter -= 1;
+        }
+        else
+        {
+            aTimer.Enabled = false;
+            CaptureFrame();
+
+        }
+        InvokeAsync(StateHasChanged);
+    }
+
+
+    [JSInvokable]
+    public void ProcessImage(string imageString)
+    {
+
+        frameUri = imageString;
+        byte[] imageData = Convert.FromBase64String(imageString.Split(',')[1]);
+        index++;
+        string path1 = path + index + ".jpg";
+        Image image;
+        using (MemoryStream ms = new MemoryStream(imageData))
+        {
+            image = Image.Load(ms);
+
+
+        }
+
+        image.Mutate(x => x.Resize(1800, 1200));
+        image.Mutate(x => x.AutoOrient());
+
+        image.Save(path1);
+
+
+        NavManager.NavigateTo("/ShowTakenImage", forceLoad: true);
+
+    }
+
+
+}
+
+
+
+

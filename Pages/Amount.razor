@@ -1,0 +1,52 @@
+﻿
+@page "/amount"
+@using BlazorServerApp.Data
+
+
+@inject NavigationManager NavManager
+
+
+<div class="AmountBox">
+<button class="amountPlus" @onclick="AmountPlus">+</button>
+<p class="amount">@counter</p>
+<button class="amountMinus" @onclick="AmountMinus">-</button>
+
+</div>
+<button class="btnPrint" @onclick="Print">Drucken</button>
+@code {
+    Print obj = new Print();
+
+    [Parameter]
+    public string Link{ get; set; }
+
+    int counter = 1;
+
+    string image = null;
+    public void AmountPlus()
+    {
+        if (counter <5)
+        {
+            counter++;
+        }
+
+    }
+
+
+    public void Print()
+    {
+
+        obj.PrintImage(counter,Link);
+        //NavManager.NavigateTo($"/showTakenImageAmount/{counter}");
+        NavManager.NavigateTo("/showTakenImageAmount");
+
+
+    }
+
+    public void AmountMinus()
+    {
+        if ( counter >1)
+        {
+            counter--;
+        }
+    }
+}

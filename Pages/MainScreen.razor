@@ -1,0 +1,52 @@
+﻿@page "/mainScreen"
+
+@using BlazorServerApp.Shared
+@using BlazorServerApp.Data;
+@using System.IO
+@using System.Diagnostics
+@using Blazored.Modal
+
+@inject NavigationManager NavManager
+@inject IJSRuntime JSRuntime
+@inject IModalService modal
+<h1> Camera </h1>
+
+<div>
+   
+    @if (@image == null)
+    {
+        <video id="videoFeed" width="1280" height="600" />
+    }
+    else
+    {
+        <img src="@image"/>
+    }
+    <footer>
+        @*<button class="print-button" @onclick="()=>SendToPrinter()"><span class="print-icon"></span></button>*@
+        <button class="newImageMS" @onclick="@(() => modal.Show<NewImage>())"><i class='oi oi-camera-slr'></i> </button>
+         @*<button class="newImageMS" @onclick="@(() => NavManager.NavigateTo("/cameraStream"))"><i class='oi oi-camera-slr'></i> </button>*@
+        @*<button @onclick="@(()=>modal.Show<EmailPopUp>("Deine Email:"))" class="btn btn-primary">Email</button>*@
+    </footer>
+
+
+</div>
+
+
+@code {
+
+   
+
+
+    Images obj = new Images();
+
+    int index = 0;
+    string image = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await JSRuntime.InvokeVoidAsync("startVideo", "videoFeed");
+        index = obj.CountFiles();
+    }
+
+}

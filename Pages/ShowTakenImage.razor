@@ -1,0 +1,94 @@
+﻿@page "/showTakenImage"
+@page "/showTakenImage/{Link?}"
+@page "/showTakenImageAmount/{AmountPrint?}"
+@using BlazorServerApp.Shared
+@using BlazorServerApp.Data;
+@using System.IO
+@using System.Diagnostics
+@using Blazored.Modal
+
+@inject IJSRuntime JSRuntime
+@inject IModalService modal
+@inject NavigationManager NavManager
+
+<div>
+    @*<img class="mainImage" src="/images/0.jpg" />*@
+
+
+    <img class="takenImage" src="@myImage" />
+
+    <footer>
+
+        <button class="print-button" @onclick="()=>SendToPrinter()"><span class="print-icon"></span></button>
+        <button class="newImage" @onclick="@(() => modal.Show<NewImage>())"><i class='oi oi-camera-slr'></i> </button>
+        <button @onclick="@(()=>modal.Show<EmailPopUp>("Deine Email:"))" class="btn btn-primary">Email</button>
+    </footer>
+
+
+</div>
+
+
+@code {
+
+    [Parameter]
+    public string Link { get; set; }
+
+    [Parameter]
+    public string AmountPrint { get; set; }
+
+    Images obj = new Images();
+    Print objPrint = new Print();
+    int counter = 1;
+    int index = 0;
+    string myImage = "";
+    int amount = 1;
+    string image = null;
+    public void AmountPlus()
+    {
+        if (counter <= 5)
+        {
+            counter++;
+        }
+    }
+    public void AmountMinus()
+    {
+        if (counter > 0)
+        {
+            counter--;
+        }
+    }
+    protected override void OnParametersSet()
+    {
+        if (AmountPrint != null)
+        {
+
+            amount = int.Parse(AmountPrint);
+            objPrint.PrintImage(amount,myImage);
+        }
+
+        if (Link != null)
+        {
+            myImage = CreateLink(Link);
+        }
+        else
+        {
+            index = obj.CountFiles();
+            myImage = CreateLink(index.ToString());
+
+        }
+    }
+
+    public string CreateLink(string index)
+    {
+        return "/images/" + index + ".jpg";
+    }
+    public void SendToPrinter()
+    {
+        // TODO: Pass which Image should be printed to Amount Page
+        string passImage = myImage.Substring(8, 1);
+        ModalParameters param = new ModalParameters();
+        param.Add(nameof(Amount.Link), myImage);
+        modal.Show<Amount>("Wie oft möchtest du dein Bild drucken?",param);
+        //NavManager.NavigateTo("/mainScreen");
+    }
+}

@@ -1,0 +1,73 @@
+﻿@page "/email"
+@using System.Net;
+@using System.Net.Mail;
+@using BlazorServerApp.Data
+@using BlazorServerApp.Shared;
+@using Blazored.Modal;
+@using System.Net.Mime
+
+<input type="text" name="Email" @bind="@EmailInput" @oninput="@((e) => { EmailInput=(string)e.Value;})" />
+<p> Hier wird dein Bild zu deiner persönlichen Email geschickt</p>
+<button @onclick="() => SendMail()" class="btn btn-primary">Send</button>
+
+  @if (emailSent)
+{
+    <p class="emailsuccess">Dein Bild wurde erfolgreich versendet!</p>
+}
+
+
+
+
+@code
+{
+    Images obj = new Images();
+
+    [Parameter]
+    public string Value { get; set; }
+
+    int index = 0;
+    string showMessage = "";
+    private string EmailInput { get; set; }
+    bool emailSent;
+    string path = Directory.GetCurrentDirectory() + "//wwwroot//images//";
+
+
+    public void SendMail()
+    {
+        index = obj.CountFiles(); 
+       
+        try
+        {
+           
+            using (MailMessage mail = new MailMessage())
+            {
+                Attachment att = new Attachment(path + index + ".jpg");
+                mail.From = new MailAddress("htl.fotobox@gmail.com");
+
+                mail.To.Add(EmailInput); // !
+                mail.Subject = "Dein Bild aus der Fotobox in der HTL Neufelden";
+                mail.Body = "<h1> Dein Bild findest du im Anhang</h1>";
+                mail.Body = "<p> Viel Spass mit deinem Bild aus der HTL Neufelden </p>";
+                mail.IsBodyHtml = true;
+                mail.Attachments.Add(att);
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+
+                {
+                    smtp.Credentials = new System.Net.NetworkCredential("htl.fotobox@gmail.com", "RGKMHzs5Fv5zB8j");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+
+                }
+
+            }
+            
+            emailSent = true;
+        }
+        catch
+        {
+            emailSent = false;
+
+        }
+    }
+
+}

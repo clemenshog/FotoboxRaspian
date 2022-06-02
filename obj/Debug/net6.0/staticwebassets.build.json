@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RleJJawkE1l8SUTP6nZG48QlNzSuwb665880LLlKL70=",
+  "Hash": "YYDjhbvLOZhqkJI0vQ5OoFct2GV/YobBFSMR6eBHxPY=",
   "Source": "BlazorServerApp",
   "BasePath": "_content/BlazorServerApp",
   "Mode": "Default",
@@ -17,23 +17,6 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\cleme\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored-modal.css",
-      "SourceId": "Blazored.Modal",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\cleme\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\",
-      "BasePath": "_content/Blazored.Modal",
-      "RelativePath": "blazored-modal.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\cleme\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored-modal.css"
-    },
-    {
       "Identity": "C:\\Users\\cleme\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored.modal.js",
       "SourceId": "Blazored.Modal",
       "SourceType": "Package",
@@ -49,6 +32,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\cleme\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored.modal.js"
+    },
+    {
+      "Identity": "C:\\Users\\cleme\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored-modal.css",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\cleme\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "blazored-modal.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\cleme\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored-modal.css"
     },
     {
       "Identity": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\obj\\Debug\\net6.0\\scopedcss\\bundle\\BlazorServerApp.styles.css",
@@ -117,23 +117,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
-    },
-    {
-      "Identity": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
-      "SourceId": "BlazorServerApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\wwwroot\\",
-      "BasePath": "_content/BlazorServerApp",
-      "RelativePath": "css/open-iconic/FONT-LICENSE",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
@@ -236,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Identity": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "SourceId": "BlazorServerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\wwwroot\\",
+      "BasePath": "_content/BlazorServerApp",
+      "RelativePath": "css/open-iconic/FONT-LICENSE",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
@@ -440,6 +440,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\8.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\wwwroot\\images\\9.jpg",
+      "SourceId": "BlazorServerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cleme\\Desktop\\BlazorServerApp\\wwwroot\\",
+      "BasePath": "_content/BlazorServerApp",
+      "RelativePath": "images/9.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\9.jpg"
     }
   ]
 }
